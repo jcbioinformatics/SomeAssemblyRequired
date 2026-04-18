@@ -8,8 +8,9 @@ And, I'd strongly encourage anyone who uses this repos to check out the reposito
 * [bacass](https://github.com/nf-core/bacass)
 * [genomeqc](https://github.com/nf-core/genomeqc/tree/dev)
 
-__Important__ This tutorial assumes you are running a Unix operating system, i.e. not Windows
-- It _should_ mostly be identical on a Windows device, but `$PWD` for running the pipelines should be `%CD%`
+__Important__ This tutorial assumes you are running a Unix operating system, like any MacOS, any Linux OS, or WSL
+- It _should_ mostly be identical on a Windows device with command prompt, but `$PWD` for running the pipelines should be `%CD%`
+
 
 # Tutorial
 
@@ -46,6 +47,7 @@ mamba env create --name sra-tools -f sra-tools.yml
 
 4. Install environment for pulling nf-core pipelines
 `mamba env create --name nf-core -f nf-core.yml`
+
 
 ## Download NF-Core Pipelines
 
@@ -110,22 +112,19 @@ unzip ncbi_dataset.zip -d h_influenzae_reference
 wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_dbs/TUTORIAL_k2_db.tar.gz
 ```
 
-
 ### Expected 2_5_0 Directory Structure
 
-![alt text](image-3.png)
+<img width="214" height="475" alt="image" src="https://github.com/user-attachments/assets/924c682e-9e7b-4b45-a8db-f47bc4707436" />
+
 
 ### Contents of raw_data
 
-![alt text](image-1.png)
+<img width="208" height="46" alt="image" src="https://github.com/user-attachments/assets/fb7ed016-5128-4ddd-bce3-affa4c9d16f4" />
+
 
 ### Contents of h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1
 
-![alt text](image-2.png)
-
-### Contents of TUTORIAL_k2_db
-
-![alt text](image-4.png)
+<img width="371" height="41" alt="image" src="https://github.com/user-attachments/assets/08935ce3-921a-4c3e-88a5-f785a7856c38" />
 
 
 ### Run
@@ -136,7 +135,6 @@ _Note_ The first run will take a while due to the conda environments needing to 
 
 <!--JC note, Sample sheet will be switch to a GitHub url too -->
 <!--JC note, Need to make a note of lowering request resources in conf/base.config -->
-
 
 ```
 conda activate nf-core
