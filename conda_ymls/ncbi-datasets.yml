@@ -1,0 +1,13 @@
+name: ncbi-datasets
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - _openmp_mutex=4.5
+  - ca-certificates=2026.2.25
+  - libgcc=15.2.0
+  - libgomp=15.2.0
+  - ncbi-datasets-cli=18.23.0
+  - unzip=6.0
+prefix: /home/see/miniconda3/envs/ncbi-datasets
