@@ -123,6 +123,7 @@ unzip ncbi_dataset.zip -d h_influenzae_reference
 wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_dbs/TUTORIAL_k2_db.tar.gz
 ```
 
+
 ### Expected 2_5_0 Directory Structure
 
 <img width="214" height="475" alt="image" src="https://github.com/user-attachments/assets/924c682e-9e7b-4b45-a8db-f47bc4707436" />
@@ -165,3 +166,25 @@ nextflow run main.nf \
   --skip_kmerfinder \
   --outdir results_TUTORIAL 
 ```
+
+
+# Comprehension Exercises
+
+* How does nf-core address some common pitfalls of reproducibility? 
+- _Hint_: Check the `multiqc` subfolder within the output folder
+
+* Why do we use yml files for creating conda environments?
+- _Hint_: Think about what they specify
+
+* Find the SRA run that we downloaded to use at test data
+- _Hint_: Go to https://www.ncbi.nlm.nih.gov/search/
+
+* Find the genome we used as the reference
+- _Hint_: Go to https://www.ncbi.nlm.nih.gov/datasets/
+
+* Is there any overlap between `bacass` and `genomeqc`? 
+- What programs do both run? 
+- Why would you still want to run `genomeqc`
+- _Hint_: Look at the workflow diagrams on their GitHubs and think back to what database we downloaded for testing
+  * [bacass](https://github.com/nf-core/bacass)
+  * [genomeqc](https://github.com/nf-core/genomeqc/tree/dev)
