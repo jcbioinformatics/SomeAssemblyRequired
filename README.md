@@ -23,7 +23,14 @@ Conda is a program manager, so it makes it easier for us to install other softwa
 
 1. Check if conda is installed 
 `conda --version`
-- If that command gives an error, follow the instructions [here](https://www.anaconda.com/docs/getting-started/miniconda/install/overview) to install Miniconda3
+- If that command gives an error, follow the instructions [here](https://www.anaconda.com/docs/getting-started/miniconda/install/overview) to install Miniconda3 and run the below commands after `conda --version` can be executed without error
+- These `conda tos accept` commands ensure the programs can be downloaded from where they are hosted (channels)
+
+```
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+```
+
 
 
 ### Create Conda Environments
@@ -39,14 +46,14 @@ Essentially, it's the equivalent of installing different Microsoft programs thru
 conda install -y -c conda-forge conda-libmamba-solver=26.3.0
 conda config --set solver libmamba
 
-mamba env create --name sra-tools -f sra-tools.yml
+conda env create --name sra-tools -f sra-tools.yml
 ```
 
 3. Install environment for downloading reference assemblies
-`mamba env create --name ncbi-datasets -f ncbi-datasets.yml`
+`conda env create --name ncbi-datasets -f ncbi-datasets.yml`
 
 4. Install environment for pulling nf-core pipelines
-`mamba env create --name nf-core -f nf-core.yml`
+`conda env create --name nf-core -f nf-core.yml`
 
 
 ## Download NF-Core Pipelines
@@ -133,8 +140,9 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 _Note_ The first run will take a while due to the conda environments needing to be created
 
-<!--JC note, Sample sheet will be switch to a GitHub url too -->
+<!--JC note, Sample sheet will be switch to a GitHub url too, but for now, it should be in the 2_5_0 folder too -->
 <!--JC note, Need to make a note of lowering request resources in conf/base.config -->
+<!--JC note, Need make note about running export command before each nextflow run -->
 
 ```
 conda activate nf-core
