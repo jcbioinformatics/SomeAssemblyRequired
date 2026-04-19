@@ -8,8 +8,7 @@ And, I'd strongly encourage anyone who uses this repos to check out the reposito
 * [bacass](https://github.com/nf-core/bacass)
 * [genomeqc](https://github.com/nf-core/genomeqc/tree/dev)
 
-__Important__ This tutorial assumes you are running a Unix operating system, like any MacOS, any Linux OS, or WSL
-- It _should_ mostly be identical on a Windows device with command prompt, but `$PWD` for running the pipelines should be `%CD%`
+__Important__ If you are using Windows please use Ubuntu through WSL
 
 
 # Tutorial
