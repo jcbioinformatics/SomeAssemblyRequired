@@ -1,6 +1,6 @@
 # Overview
 
-The purpose of this repos is to give an example of using nf-core pipelines to easily conduct reproducible analysis rather than to discuss that analysis and the rationale behind it. 
+The purpose of this repos is to give an example of using [nf-core](https://nf-co.re/) pipelines to easily conduct reproducible analysis rather than to discuss that analysis and the rationale behind it. 
 
 Still, this can also serve as a genome assembly tutorial.
 
