@@ -32,7 +32,6 @@ conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/ma
 ```
 
 
-
 ### Create Conda Environments
 <!-- These will be switch from local ymls to refer to the GitHub repos later -->
 
@@ -58,6 +57,8 @@ conda env create --name sra-tools -f sra-tools.yml
 
 ## Download NF-Core Pipelines
 
+<!--JC note, one of us should really submit an issue for the QUAST versions warning problem -->
+
 5. Download `bacass`
 - _Note_: Choose "none" for both downloading container images and compression type
   - Using Docker or Singularity images instead of conda environments when running nf-core pipelines is generally preferred for ensuring everything matches between runs, but this tutorial assumes the user only has conda installed
@@ -67,6 +68,9 @@ conda env create --name sra-tools -f sra-tools.yml
 conda activate nf-core
 
 nf-core pipelines download bacass -r 2.5.0
+
+# Fix quast versions issue
+sed -i 's/2>\&1/\| grep -v WARNING/' nf-core-bacass_2.5.0/2_5_0/modules/nf-core/quast/main.nf 
 ```
 
 6. Download `genomeqc`
