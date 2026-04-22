@@ -166,6 +166,19 @@ nextflow run main.nf \
   --outdir results_TUTORIAL 
 ```
 
+### CLI Parameter Descriptions
+
+All config descriptions and their help text can be viewed [here](https://github.com/nf-core/bacass/blob/master/nextflow_schema.json)
+
+* -profile - Refers to a group of predefined options in `nextflow.config`.  
+* --input - Path to a sample sheet giving locations of input data. See [usage.md](https://github.com/nf-core/bacass/blob/master/docs/usage.md#samplesheet)
+* --assembly-type - Type of sequence data
+* --kraken2db - Path to Kraken2 database to assess sample purity
+* --reference_fasta - If desired, you can pass a path to a reference genome in fasta format to compare your resulting assembly against
+* --reference_gff - If desired, you can pass a path to a gff file containing annotations for a reference genome for comparison
+* --skip_kmerfinder - Skip kmerfinder purity assessment
+* --outdir - Path to folder to receive all outputs from the pipeline
+
 
 # Comprehension Exercises
 
