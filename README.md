@@ -180,6 +180,26 @@ All config descriptions and their help text can be viewed [here](https://github.
 * --outdir - Path to folder to receive all outputs from the pipeline
 
 
+### Key Outputs
+
+See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/docs/output.md) for more details
+
+- results_TUTORIAL/FastQC/raw/H_influenzae_*_fastqc.html - Raw data quality
+  - [More Info](https://mugenomicscore.missouri.edu/PDF/FastQC_Manual.pdf)
+- results_TUTORIAL/multiqc/multiqc_report.html - Pipeline summary
+  - Program report outputs
+  - All program versions (`Software Versions`)
+  - Parameters that differ from the defaults (`nf-core/bacass Workflow Summary`)
+  - [Additional MultiQC Info](https://github.com/MultiQC/MultiQC)
+- results_TUTORIAL/Prokka/H_influenzae/H_influenzae.tsv - Assembly feature annotations
+  - [More Info](https://github.com/tseemann/prokka#output-files)
+- results_TUTORIAL/QUAST/report/report.html - Assembly QC
+  - [More Info](https://quast.sourceforge.net/docs/manual.html#sec3)
+- results_TUTORIAL/Unicycler/H_influenzae.scaffolds.fa.gz - Assembly sequences
+  - [More Info](https://github.com/rrwick/unicycler#output-files)
+  - [Terminology Info](https://mycocosm.jgi.doe.gov/help/scaffolds.jsf)
+
+
 # Comprehension Exercises
 
 * How does nf-core address some common pitfalls of reproducibility? 
