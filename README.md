@@ -157,13 +157,13 @@ export NXF_CONDA_CACHEDIR=~/conda_nf
 
 nextflow run main.nf \
   -profile conda \
-  --input sample_sheet_tutorial.txt \
+  --input sample_sheet_bacass_tutorial.txt \
   --assembly_type 'short' \
   --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
   --reference_fasta $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna \
   --reference_gff $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/genomic.gff \
   --skip_kmerfinder \
-  --outdir results_TUTORIAL 
+  --outdir results_bacass_TUTORIAL 
 ```
 
 ### CLI Parameter Descriptions
@@ -184,21 +184,54 @@ All config descriptions and their help text can be viewed [here](https://github.
 
 See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/docs/output.md) for more details
 
-- results_TUTORIAL/FastQC/raw/H_influenzae_*_fastqc.html - Raw data quality
+- results_bacass_TUTORIAL/FastQC/raw/H_influenzae_*_fastqc.html - Raw data quality
   - [More Info](https://mugenomicscore.missouri.edu/PDF/FastQC_Manual.pdf)
-- results_TUTORIAL/multiqc/multiqc_report.html - Pipeline summary
+- results_bacass_TUTORIAL/multiqc/multiqc_report.html - Pipeline summary
   - Program report outputs
   - All program versions (`Software Versions`)
   - Parameters that differ from the defaults (`nf-core/bacass Workflow Summary`)
   - [Additional MultiQC Info](https://github.com/MultiQC/MultiQC)
-- results_TUTORIAL/Prokka/H_influenzae/H_influenzae.tsv - Assembly feature annotations
+- results_bacass_TUTORIAL/Prokka/H_influenzae/H_influenzae.tsv - Assembly feature annotations
   - [More Info](https://github.com/tseemann/prokka#output-files)
-- results_TUTORIAL/QUAST/report/report.html - Assembly QC
+- results_bacass_TUTORIAL/QUAST/report/report.html - Assembly QC
   - [More Info](https://quast.sourceforge.net/docs/manual.html#sec3)
-- results_TUTORIAL/Unicycler/H_influenzae.scaffolds.fa.gz - Assembly sequences
+- results_bacass_TUTORIAL/Unicycler/H_influenzae.scaffolds.fa.gz - Assembly sequences
   - [More Info](https://github.com/rrwick/unicycler#output-files)
   - [Terminology Info](https://mycocosm.jgi.doe.gov/help/scaffolds.jsf)
 
+
+## Decontaminate and Evaluate Assembly
+
+10. Move into the `nf-core-genomeqc_787a0e6/787a0e6` folder
+
+If you're command line is currently in the `2_5_0` subfolder, you can use the below command
+
+`../../nf-core-genomeqc_787a0e6/787a0e6`
+
+11. Download the FCS-GX test database
+
+FCS-GX is used to identify _and_ remove contaminants from the assembly
+
+`curl -LO https://zenodo.org/records/10932013/files/FCS_combo_test.fa`
+
+<!--JC note, the samplesheet will point to a GitHub url once this repos is public -->
+
+12. Run genomeqc
+
+You may need to lower the requested RAM and cpus in `conf/base.config`
+
+<!--JC note, Need to make a branch with my edits to nextflow.config, nextflow.schema, and subworkflows/decontamination.nf -->
+
+```
+nextflow run main.nf \
+  -profile conda \
+  --input $PWD/sample_sheet_genomeqc_tutorial.csv \
+  --gxdb $PWD/FCS_combo_test.fa \
+  --skip_fcs_adaptor \
+  --outdir results_genomeqc_TUTORIAL
+
+
+```
 
 # Comprehension Exercises
 
