@@ -208,6 +208,8 @@ If you're command line is currently in the `2_5_0` subfolder, you can use the be
 
 `../../nf-core-genomeqc_787a0e6/787a0e6`
 
+<!--JC note, strike this download if test manifest works -->
+
 11. Download the FCS-GX test database
 
 FCS-GX is used to identify _and_ remove contaminants from the assembly
@@ -223,10 +225,14 @@ You may need to lower the requested RAM and cpus in `conf/base.config`
 <!--JC note, Need to make a branch with my edits to nextflow.config, nextflow.schema, and subworkflows/decontamination.nf -->
 
 ```
+# Set folder path to use for conda envs
+# Prevents them from being redownloaded
+export NXF_CONDA_CACHEDIR=~/conda_nf
+
 nextflow run main.nf \
   -profile conda \
   --input $PWD/sample_sheet_genomeqc_tutorial.csv \
-  --gxdb $PWD/FCS_combo_test.fa \
+  --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
   --skip_fcs_adaptor \
   --outdir results_genomeqc_TUTORIAL
 
