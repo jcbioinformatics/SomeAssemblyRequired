@@ -8,19 +8,32 @@ And, I'd strongly encourage anyone who uses this repos to check out the reposito
 * [bacass](https://github.com/nf-core/bacass)
 * [genomeqc](https://github.com/nf-core/genomeqc/tree/dev)
 
-__Important__ If you are using Windows please use Ubuntu through WSL
+__Important__: If you are using Windows please use Ubuntu through WSL
 
 
 # Tutorial
 
 ## Install Software
 
+### Install Docker (if needed)
+
+Docker allows us to download "containers" - essentially software packages that contain absolutely everything needed to run a program
+- We'll use it when running the nf-core pipelines to ensure each step is executed with the exact software it expects
+- __Important__: If you are running the tutorial on a computer cluster, skip the Docker install since if it's not already installed, you will NOT be able to install it yourself
+
+1. Check if Docker is installed
+- On Windows, click on the Windows start menu icon and search for Docker
+- On Mac, go to applications in Finder (Cmd+Shift+A) and check for Docker
+
+_If needed_, install Docker Desktop by clicking either "Mac" or "Windows" [here](https://docs.docker.com/desktop/#next-steps) and download the appropriate version
+
+
 ### Install Conda (if needed)
 
-Conda is a program manager, so it makes it easier for us to install other software that we'll need.
-- Singularity or Docker are generally preferred as alternative methods of fetching programs, but they tend to be harder to install
+Conda is also a program manager but is more lightweight than Docker and requires fewer permissions to install and run
+- We'll use conda to download the programs we need to get test data and the nf-core pipelines
 
-1. Check if conda is installed 
+2. Check if conda is installed 
 `conda --version`
 - If that command gives an error, follow the instructions [here](https://www.anaconda.com/docs/getting-started/miniconda/install/overview) to install Miniconda3 and run the below commands after `conda --version` can be executed without error
 - These `conda tos accept` commands ensure the programs can be downloaded from where they are hosted (channels)
@@ -38,7 +51,7 @@ Using multiple environments ensures each program is able to be installed properl
 
 Essentially, it's the equivalent of installing different Microsoft programs thru a single installer
 
-2. Install environment for downloading raw data
+3. Install environment for downloading raw data
 - _Note_: Make sure the `base` environment is active when you install libmamba
 ```
 conda install -y -c conda-forge conda-libmamba-solver=26.3.0
@@ -47,10 +60,10 @@ conda config --set solver libmamba
 conda env create --name sra-tools -f sra-tools.yml
 ```
 
-3. Install environment for downloading reference assemblies
+4. Install environment for downloading reference assemblies
 `conda env create --name ncbi-datasets -f ncbi-datasets.yml`
 
-4. Install environment for pulling nf-core pipelines
+5. Install environment for pulling nf-core pipelines
 `conda env create --name nf-core -f nf-core.yml`
 
 
@@ -58,10 +71,12 @@ conda env create --name sra-tools -f sra-tools.yml
 
 <!--JC note, one of us should really submit an issue for the QUAST versions warning problem -->
 
-5. Download `bacass`
-- _Note_: Choose "none" for both downloading container images and compression type
+1. Download `bacass`
+- _Note_: __If running on your computer__ choose "docker" at the `Download software container images` prompt
+- _Note_: __If running on Juniata college's cluster__, choose "none" at the `Download software container images` prompt
+  - Choose "none" at the `Choose compression type` prompt
   - Using Docker or Singularity images instead of conda environments when running nf-core pipelines is generally preferred for ensuring everything matches between runs, but this tutorial assumes the user only has conda installed
-  - Since we'll be using the pipelines immediately and they're reasonably small, there's not much reason to download in a compressed form
+  - Since we'll be using the pipelines immediately and they're reasonably small, it's fine to download in a compressed form
 
 ```
 conda activate nf-core
@@ -72,9 +87,11 @@ nf-core pipelines download bacass -r 2.5.0
 sed -i 's/2>\&1/\| grep -v WARNING/' nf-core-bacass_2.5.0/2_5_0/modules/nf-core/quast/main.nf 
 ```
 
-6. Download `genomeqc`
+2. Download `genomeqc`
+- Choose the same options at the `Download software container images` and `Choose compression type` prompts as you did before 
+
 ```
-nf-core pipelines download genomeqc -r 787a0e6
+nf-core pipelines download genomeqc -r 1947a80
 
 conda deactivate
 ```
@@ -84,7 +101,7 @@ conda deactivate
 
 ### Download test data
 
-7. Download raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
+1. Download raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
 -_Note_: The total size of the downloaded raw data files is around 58 MB and may take a minute or two to download
 
 Move into the folder for bacass
@@ -105,7 +122,7 @@ fastq-dump --split-files --origfmt --gzip SRR37975260 --outdir raw_data
 conda deactivate
 ```
 
-8. Download _H. influenzae_ reference genome and decompress the resulting zip
+2. Download _H. influenzae_ reference genome and decompress the resulting zip
 -_Note_: Don't forget to deactivate the `sra-tools` environment before proceeding with the next step
   - Generally, you don't actually need to deactive an environment before activating another, but doing so prevents weird edge-cases where paths or dependencies could conflict
 ```
@@ -116,7 +133,7 @@ datasets download genome accession GCF_020736045.1 --include genome,gff3
 unzip ncbi_dataset.zip -d h_influenzae_reference
 ```
 
-9. Download Kraken database for tutorial
+3. Download Kraken database for tutorial
 <!--JC note, url is placeholder. UPDATE, once it's on main -->
 ```
 wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_dbs/TUTORIAL_k2_db.tar.gz
@@ -140,9 +157,10 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 ### Run
 
-9. Run `bacass`
+4. Run `bacass`
 
-_Note_ The first run will take a while due to the conda environments needing to be created
+_Note_: The first run will take a while due to the Docker images being downloaded
+_Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
 <!--JC note, Sample sheet will be switch to a GitHub url too, but for now, it should be in the 2_5_0 folder too -->
 <!--JC note, Need to make a note of lowering request resources in conf/base.config -->
@@ -151,12 +169,8 @@ _Note_ The first run will take a while due to the conda environments needing to 
 ```
 conda activate nf-core
 
-# Set folder path to use for conda envs
-# Prevents them from being redownloaded
-export NXF_CONDA_CACHEDIR=~/conda_nf
-
 nextflow run main.nf \
-  -profile conda \
+  -profile docker \
   --input sample_sheet_bacass_tutorial.txt \
   --assembly_type 'short' \
   --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
@@ -202,7 +216,7 @@ See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/
 
 ## Decontaminate and Evaluate Assembly
 
-10. Move into the `nf-core-genomeqc_787a0e6/787a0e6` folder
+1. Move into the `nf-core-genomeqc_787a0e6/787a0e6` folder
 
 If you're command line is currently in the `2_5_0` subfolder, you can use the below command
 
@@ -210,7 +224,7 @@ If you're command line is currently in the `2_5_0` subfolder, you can use the be
 
 <!--JC note, strike this download if test manifest works -->
 
-11. Download the FCS-GX test database
+2. Download the FCS-GX test database
 
 FCS-GX is used to identify _and_ remove contaminants from the assembly
 
@@ -218,19 +232,18 @@ FCS-GX is used to identify _and_ remove contaminants from the assembly
 
 <!--JC note, the samplesheet will point to a GitHub url once this repos is public -->
 
-12. Run genomeqc
+3. Run genomeqc
 
 You may need to lower the requested RAM and cpus in `conf/base.config`
 
+_Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
+
+
 <!--JC note, Need to make a branch with my edits to nextflow.config, nextflow.schema, and subworkflows/decontamination.nf -->
-
+<!-- JC note, busco versions may be messed up, see /home/see/Projects/2026/April/LifeSciencesSymposium/redo_TUTORIAL/nf-core-genomeqc_787a0e6/787a0e6/work/60/8fa962430a3262c6b0ee5cb34cada7-->
 ```
-# Set folder path to use for conda envs
-# Prevents them from being redownloaded
-export NXF_CONDA_CACHEDIR=~/conda_nf
-
 nextflow run main.nf \
-  -profile conda \
+  -profile docker \
   --input $PWD/sample_sheet_genomeqc_tutorial.csv \
   --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
   --skip_fcs_adaptor \
@@ -238,6 +251,63 @@ nextflow run main.nf \
 
 
 ```
+
+
+## Juniata Cluster Execution
+
+<!--JC note, will also be a GitHub link -->
+1. Download template_juniata_college.sh
+- Rename it to either bacass_juniata_college.sh or genomeqc_juniata_college.sh
+
+2. Open it with a text editor
+
+3. Change the strings that are in all caps with dollar signs in front of them to match what you're trying to run
+
+The script should now look like the below
+
+The parts I edited are indicated with the navy rectangles
+- Renamed file
+- Changed job name
+- Added brief description
+- Added date
+- Changed path to working directory to my `2_5_0` folder
+
+
+4. Paste the appropriate code block into the script below the line containing ###################CODE###################
+
+__For bacass__
+```
+# Activate environment
+source ~/.bashrc
+conda activate nf-core
+
+# Run with singularity
+export NXF_SINGULARITY_CACHEDIR='/home/see/NFX_Singularity'
+
+nextflow run main.nf \
+  -profile singularity \
+  --input sample_sheet_bacass_tutorial.txt \
+  --assembly_type 'short' \
+  --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
+  --reference_fasta $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna \
+  --reference_gff $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/genomic.gff \
+  --skip_kmerfinder \
+  --outdir results_bacass_TUTORIAL 
+
+```
+
+__For genomeqc__
+
+
+The script should now look like the below
+
+
+
+5. Submit the script with `sbatch $PATHTOSCRIPT`
+- The script needs to be on the cluster, so if you edited it on your computer, upload it to your cluster account first
+- Change $PATHTOSCRIPT to be the actual path to the script
+
+
 
 # Comprehension Exercises
 
