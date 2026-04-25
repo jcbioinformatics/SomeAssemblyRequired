@@ -272,6 +272,8 @@ The parts I edited are indicated with the navy rectangles
 - Added date
 - Changed path to working directory to my `2_5_0` folder
 
+<img width="857" height="506" alt="jc_script_edited" src="https://github.com/user-attachments/assets/b5b00b18-47d5-4da3-9491-09bcd85df683" />
+
 
 4. Paste the appropriate code block into the script below the line containing ###################CODE###################
 
@@ -301,6 +303,7 @@ __For genomeqc__
 
 The script should now look like the below
 
+<img width="1044" height="798" alt="jc_script_edited_code" src="https://github.com/user-attachments/assets/77e323ab-1e33-4e3f-9bc9-b828e36f8c7d" />
 
 
 5. Submit the script with `sbatch $PATHTOSCRIPT`
