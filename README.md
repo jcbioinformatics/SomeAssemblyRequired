@@ -299,9 +299,23 @@ nextflow run main.nf \
 ```
 
 __For genomeqc__
+```
+# Activate environment
+source ~/.bashrc
+conda activate nf-core
 
+# Run with singularity
+export NXF_SINGULARITY_CACHEDIR='/home/see/NFX_Singularity'
+nextflow run main.nf \
+  -profile singularity \
+  --input $PWD/sample_sheet_genomeqc_tutorial.csv \
+  --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
+  --skip_fcs_adaptor \
+  --outdir results_genomeqc_TUTORIAL
 
-The script should now look like the below
+```
+
+The script should now look like the below (bacass shown as the example)
 
 <img width="1044" height="798" alt="jc_script_edited_code" src="https://github.com/user-attachments/assets/77e323ab-1e33-4e3f-9bc9-b828e36f8c7d" />
 
@@ -309,7 +323,6 @@ The script should now look like the below
 5. Submit the script with `sbatch $PATHTOSCRIPT`
 - The script needs to be on the cluster, so if you edited it on your computer, upload it to your cluster account first
 - Change $PATHTOSCRIPT to be the actual path to the script
-
 
 
 # Comprehension Exercises
