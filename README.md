@@ -159,7 +159,8 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 4. Run `bacass`
 
-_Note_: The first run will take a while due to the Docker images being downloaded
+_Note_: The first run will take a while due to the Docker images being downloaded 
+
 _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
 <!--JC note, Sample sheet will be switch to a GitHub url too, but for now, it should be in the 2_5_0 folder too -->
@@ -224,11 +225,17 @@ If you're command line is currently in the `2_5_0` subfolder, you can use the be
 
 <!--JC note, strike this download if test manifest works -->
 
-2. Download the FCS-GX test database
+2. Download additional genomes for comparison
 
-FCS-GX is used to identify _and_ remove contaminants from the assembly
+```
+conda activate ncbi-datasets
 
-`curl -LO https://zenodo.org/records/10932013/files/FCS_combo_test.fa`
+datasets download genome accession GCF_900477945.1 GCF_000005845.2 GCF_020736045.1 --include genome,gff3
+
+unzip ncbi_dataset.zip -d additional_genome_references
+
+```
+
 
 <!--JC note, the samplesheet will point to a GitHub url once this repos is public -->
 
@@ -241,12 +248,14 @@ _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution]
 
 <!--JC note, Need to make a branch with my edits to nextflow.config, nextflow.schema, and subworkflows/decontamination.nf -->
 <!-- JC note, busco versions may be messed up, see /home/see/Projects/2026/April/LifeSciencesSymposium/redo_TUTORIAL/nf-core-genomeqc_787a0e6/787a0e6/work/60/8fa962430a3262c6b0ee5cb34cada7-->
+
+<!--GCF_040012415.1 Sanguibacter sp. 25GB23B1 -->
+<!--GCF_038593655.1 Vreelandella neptunia -->
 ```
 nextflow run main.nf \
   -profile docker \
   --input $PWD/sample_sheet_genomeqc_tutorial.csv \
   --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
-  --skip_fcs_adaptor \
   --outdir results_genomeqc_TUTORIAL
 
 
