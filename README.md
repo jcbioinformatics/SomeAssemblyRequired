@@ -262,6 +262,23 @@ nextflow run main.nf \
 ```
 
 
+### CLI Parameter Descriptions
+
+All config descriptions and their help text can be viewed [here](https://github.com/nf-core/genomeqc/blob/dev/nextflow_schema.json)
+
+* -profile - Refers to a group of predefined options in `nextflow.config`.  
+* --input - Path to a sample sheet giving locations of input data. See [usage.md](https://github.com/nf-core/genomeqc/blob/dev/docs/usage.md#samplesheet-input)
+* --gxdb_manifiest - URL to test database for FCS-GX decontamination
+* --outdir - Path to folder to receive all outputs from the pipeline
+
+
+### Key Outputs
+
+See genomeqc's documentation [here](https://github.com/nf-core/genomeqc/blob/dev/docs/output.md) for more details
+
+
+
+
 ## Juniata Cluster Execution
 
 <!--JC note, will also be a GitHub link -->
