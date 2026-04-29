@@ -274,9 +274,18 @@ All config descriptions and their help text can be viewed [here](https://github.
 
 ### Key Outputs
 
+<!--JC note, ask GB what she thinks is the best genome QC output to look at, like AGAT or QUAST -->
 See genomeqc's documentation [here](https://github.com/nf-core/genomeqc/blob/dev/docs/output.md) for more details
 
-
+- results_genomeqc_TUTORIAL/decontamination/cleaned_genome/*.cleaned.fasta - Assemblies after contaminant removal
+  - [More Info](https://github.com/nf-core/genomeqc/blob/dev/docs/output.md#fcs-gx-clean-genome)
+- results_genomeqc_TUTORIAL/multiqc/multiqc_report.html - Pipeline summary
+  - Program report outputs
+  - All program versions (`Software Versions`)
+  - Parameters that differ from the defaults (`nf-core/genomeqc Workflow Summary`)
+  - [Additional MultiQC Info](https://github.com/MultiQC/MultiQC)
+- results_genomeqc_TUTORIAL/tree/genome_anno/tree_plot.* - Phylogenetic trees of assemblies w/ QC information
+  - [More Info](https://github.com/nf-core/genomeqc/blob/dev/docs/output.md#tree-summary)
 
 
 ## Juniata Cluster Execution
