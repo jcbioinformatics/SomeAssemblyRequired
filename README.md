@@ -101,7 +101,7 @@ conda deactivate
 
 ### Download test data
 
-1. Download raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
+1. Put raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
 -_Note_: The total size of the downloaded raw data files is around 58 MB and may take a minute or two to download
 
 Move into the folder for bacass
@@ -112,12 +112,17 @@ cd nf-core-bacass_2.5.0/2_5_0
 ```
 
 Download fastq files
+
+So things run faster, we'll only download the _first_ 320,000 sequences in the raw data file
+
+That should result in roughly 50x coverage (2 * 150 * 320,000 / 1,900,000)
+
 ```
 conda activate sra-tools
 
 mkdir raw_data
 
-fastq-dump --split-files --origfmt --gzip SRR37975260 --outdir raw_data
+fastq-dump --split-files --origfmt --gzip SRR17117372 SRR37975260 -X 320000 --outdir raw_data
 
 conda deactivate
 ```
@@ -159,7 +164,8 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 4. Run `bacass`
 
-_Note_: The first run will take a while due to the Docker images being downloaded 
+_Note_: __If running locally__, make sure Docker Desktop is running before trying to run `bacass`
+- The first run will take a while due to the Docker images being downloaded 
 
 _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
