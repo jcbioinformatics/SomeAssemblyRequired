@@ -113,16 +113,16 @@ cd nf-core-bacass_2.5.0/2_5_0
 
 Download fastq files
 
-So things run faster, we'll only download the _first_ 320,000 sequences in the raw data file
+So things run faster, we'll only download the _first_ 160,000 sequences in the raw data file
 
-That should result in roughly 50x coverage (2 * 150 * 320,000 / 1,900,000)
+That should result in roughly 25x coverage (2 * 150 * 160,000 / 1,900,000)
 
 ```
 conda activate sra-tools
 
 mkdir raw_data
 
-fastq-dump --split-files --origfmt --gzip SRR17117372 SRR37975260 -X 320000 --outdir raw_data
+fastq-dump --split-files --origfmt --gzip SRR17117372 SRR37975260 -X 160000 --outdir raw_data
 
 conda deactivate
 ```
