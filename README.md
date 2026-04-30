@@ -212,11 +212,11 @@ See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/
   - All program versions (`Software Versions`)
   - Parameters that differ from the defaults (`nf-core/bacass Workflow Summary`)
   - [Additional MultiQC Info](https://github.com/MultiQC/MultiQC)
-- results_bacass_TUTORIAL/Prokka/H_influenzae/H_influenzae.tsv - Assembly feature annotations
+- results_bacass_TUTORIAL/Prokka/\*/*.tsv - Assembly feature annotations
   - [More Info](https://github.com/tseemann/prokka#output-files)
 - results_bacass_TUTORIAL/QUAST/report/report.html - Assembly QC
   - [More Info](https://quast.sourceforge.net/docs/manual.html#sec3)
-- results_bacass_TUTORIAL/Unicycler/H_influenzae.scaffolds.fa.gz - Assembly sequences
+- results_bacass_TUTORIAL/Unicycler/*.scaffolds.fa.gz - Assembly sequences
   - [More Info](https://github.com/rrwick/unicycler#output-files)
   - [Terminology Info](https://mycocosm.jgi.doe.gov/help/scaffolds.jsf)
 
