@@ -232,11 +232,13 @@ If you're command line is currently in the `2_5_0` subfolder, you can use the be
 <!--JC note, strike this download if test manifest works -->
 
 2. Download additional genomes for comparison
+- GCF_900477945.1: _Haemophilus haemolyticus_
+- GCF_000005845.2: _Escherichia coli str. K-12 substr. MG1655_
 
 ```
 conda activate ncbi-datasets
 
-datasets download genome accession GCF_900477945.1 GCF_000005845.2 GCF_020736045.1 --include genome,gff3
+datasets download genome accession GCF_900477945.1 GCF_000005845.2 --include genome,gff3
 
 unzip ncbi_dataset.zip -d additional_genome_references
 
@@ -261,9 +263,8 @@ _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution]
 nextflow run main.nf \
   -profile docker \
   --input $PWD/sample_sheet_genomeqc_tutorial.csv \
-  --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
+  --gxdb_manifiest 'https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest' \
   --outdir results_genomeqc_TUTORIAL
-
 
 ```
 
