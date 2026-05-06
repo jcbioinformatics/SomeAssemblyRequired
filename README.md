@@ -102,7 +102,6 @@ conda deactivate
 ### Download test data
 
 1. Put raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
--_Note_: The total size of the downloaded raw data files is around 58 MB and may take a minute or two to download
 
 Move into the folder for bacass
 ```
@@ -113,9 +112,15 @@ cd nf-core-bacass_2.5.0/2_5_0
 
 Download fastq files
 
-So things run faster, we'll only download the _first_ 160,000 sequences in the raw data file
+We'll only download the _first_ 160,000 sequences in the raw data file
 
 That should result in roughly 25x coverage (2 * 150 * 160,000 / 1,900,000)
+
+For the sake of time, we're using fewer sequences but generally at least 50x coverage is strongly preferred. 
+
+See https://pmc.ncbi.nlm.nih.gov/articles/PMC10963913/
+
+And, for the sake of simplicity and reproducibility, we're literally taking just the first sequences, instead of randomly selecting sequences.
 
 ```
 conda activate sra-tools
