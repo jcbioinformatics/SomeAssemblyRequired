@@ -104,6 +104,7 @@ conda deactivate
 1. Put raw _Haemophilus influenzae_ sequencing data to a `raw_data` subfolder
 
 Move into the folder for bacass
+
 ```
 # Move into the folder for bacass
 cd nf-core-bacass_2.5.0/2_5_0
@@ -120,7 +121,7 @@ For the sake of time, we're using fewer sequences but generally at least 50x cov
 
 See https://pmc.ncbi.nlm.nih.gov/articles/PMC10963913/
 
-And, for the sake of simplicity and reproducibility, we're literally taking just the first sequences, instead of randomly selecting sequences.
+And, for the sake of simplicity and reproducibility, we're literally taking just the first 160,000 sequences, instead of randomly sampling sequences.
 
 ```
 conda activate sra-tools
