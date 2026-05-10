@@ -81,10 +81,9 @@ conda env create --name sra-tools -f sra-tools.yml
 ```
 conda activate nf-core
 
-nf-core pipelines download bacass -r 2.5.0
+nf-core pipelines download bacass -r 2.6.0
 
-# Fix quast versions issue
-sed -i 's/2>\&1/\| grep -v WARNING/' nf-core-bacass_2.5.0/2_5_0/modules/nf-core/quast/main.nf 
+
 ```
 
 2. Download `genomeqc`
@@ -107,7 +106,7 @@ Move into the folder for bacass
 
 ```
 # Move into the folder for bacass
-cd nf-core-bacass_2.5.0/2_5_0
+cd nf-core-bacass_2.6.0/2_6_0
 
 ```
 
@@ -151,7 +150,7 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 ```
 
 
-### Expected 2_5_0 Directory Structure
+### Expected 2_6_0 Directory Structure
 
 <img width="214" height="475" alt="image" src="https://github.com/user-attachments/assets/924c682e-9e7b-4b45-a8db-f47bc4707436" />
 
@@ -175,7 +174,7 @@ _Note_: __If running locally__, make sure Docker Desktop is running before tryin
 
 _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
-<!--JC note, Sample sheet will be switch to a GitHub url too, but for now, it should be in the 2_5_0 folder too -->
+<!--JC note, Sample sheet will be switch to a GitHub url too, but for now, it should be in the 2_6_0 folder too -->
 <!--JC note, Need to make a note of lowering request resources in conf/base.config -->
 <!--JC note, Need make note about running export command before each nextflow run -->
 
@@ -231,7 +230,7 @@ See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/
 
 1. Move into the `nf-core-genomeqc_787a0e6/787a0e6` folder
 
-If you're command line is currently in the `2_5_0` subfolder, you can use the below command
+If you're command line is currently in the `2_6_0` subfolder, you can use the below command
 
 `../../nf-core-genomeqc_787a0e6/787a0e6`
 
@@ -318,7 +317,7 @@ The parts I edited are indicated with the navy rectangles
 - Changed job name
 - Added brief description
 - Added date
-- Changed path to working directory to my `2_5_0` folder
+- Changed path to working directory to my `2_6_0` folder
 
 <img width="857" height="506" alt="jc_script_edited" src="https://github.com/user-attachments/assets/b5b00b18-47d5-4da3-9491-09bcd85df683" />
 
