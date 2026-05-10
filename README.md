@@ -152,12 +152,12 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 ### Expected 2_6_0 Directory Structure
 
-<img width="214" height="475" alt="image" src="https://github.com/user-attachments/assets/924c682e-9e7b-4b45-a8db-f47bc4707436" />
+<img width="613" height="685" alt="image" src="https://github.com/user-attachments/assets/ec7936f6-b6f6-4520-8973-c960c44fb43b" />
 
 
 ### Contents of raw_data
 
-<img width="208" height="46" alt="image" src="https://github.com/user-attachments/assets/fb7ed016-5128-4ddd-bce3-affa4c9d16f4" />
+<img width="575" height="153" alt="image" src="https://github.com/user-attachments/assets/f1f488a4-3534-4950-a175-be9246d8abd3" />
 
 
 ### Contents of h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1
