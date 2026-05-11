@@ -185,6 +185,7 @@ nextflow run main.nf \
   -profile docker \
   --input sample_sheet_bacass_tutorial.txt \
   --assembly_type 'short' \
+  --assembler 'unicycler' \
   --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
   --reference_fasta $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna \
   --reference_gff $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/genomic.gff \
@@ -199,6 +200,7 @@ All config descriptions and their help text can be viewed [here](https://github.
 * -profile - Refers to a group of predefined options in `nextflow.config`.  
 * --input - Path to a sample sheet giving locations of input data. See [usage.md](https://github.com/nf-core/bacass/blob/master/docs/usage.md#samplesheet)
 * --assembly-type - Type of sequence data
+* --assembler - Name of program to use for assembly
 * --kraken2db - Path to Kraken2 database to assess sample purity
 * --reference_fasta - If desired, you can pass a path to a reference genome in fasta format to compare your resulting assembly against
 * --reference_gff - If desired, you can pass a path to a gff file containing annotations for a reference genome for comparison
