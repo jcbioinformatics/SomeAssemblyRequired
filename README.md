@@ -234,7 +234,7 @@ See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/
 
 If you're command line is currently in the `2_6_0` subfolder, you can use the below command
 
-`../../nf-core-genomeqc_787a0e6/787a0e6`
+`cd ../../nf-core-genomeqc_787a0e6/787a0e6`
 
 <!--JC note, strike this download if test manifest works -->
 
