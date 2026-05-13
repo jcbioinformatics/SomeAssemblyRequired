@@ -169,6 +169,8 @@ wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_
 
 4. Run `bacass`
 
+You may need to lower the requested RAM and cpus in `conf/base.config`
+
 _Note_: __If running locally__, make sure Docker Desktop is running before trying to run `bacass`
 - The first run will take a while due to the Docker images being downloaded 
 
@@ -255,8 +257,6 @@ unzip ncbi_dataset.zip -d additional_genome_references
 <!--JC note, the samplesheet will point to a GitHub url once this repos is public -->
 
 3. Run genomeqc
-
-You may need to lower the requested RAM and cpus in `conf/base.config`
 
 _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
