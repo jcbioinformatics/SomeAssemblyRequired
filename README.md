@@ -267,6 +267,8 @@ _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution]
 <!--GCF_040012415.1 Sanguibacter sp. 25GB23B1 -->
 <!--GCF_038593655.1 Vreelandella neptunia -->
 ```
+conda activate nf-core
+
 nextflow run main.nf \
   -profile docker \
   --input $PWD/sample_sheet_genomeqc_tutorial.csv \
