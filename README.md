@@ -376,6 +376,17 @@ The script should now look like the below (bacass shown as the example)
 - Change $PATHTOSCRIPT to be the actual path to the script
 
 
+# Additional Resources
+
+- [Command Line Tutorial](https://documentation.ubuntu.com/desktop/en/latest/tutorial/the-linux-command-line-for-beginners/)
+- [Windows Subsystem Linux Tutorial](https://www.youtube.com/watch?v=S34znhI-pRA)
+  - Only relevant for Windows users
+- [Conda Tutorial](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html)
+- [Docker Tutorial](https://docker-curriculum.com/)
+- [Nextflow Tutorial](https://training.nextflow.io/2.1.7/)
+- [nf-core Tutorial](https://training.nextflow.io/2.1.7/side_quests/nf-core/)
+
+
 # Comprehension Exercises
 
 * How does nf-core address some common pitfalls of reproducibility? 
