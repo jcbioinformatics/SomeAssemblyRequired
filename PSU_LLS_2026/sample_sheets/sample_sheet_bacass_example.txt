@@ -1,0 +1,2 @@
+ID	R1	R2	LongFastQ	Fast5	GenomeSize
+H_influenzae	./raw_data_example/SRR17117372_1.fastq.gz	./raw_data_example/SRR17117372_2.fastq.gz	NA	NA	1.9m

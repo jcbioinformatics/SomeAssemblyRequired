@@ -1,4 +1,0 @@
-ID	R1	R2	LongFastQ	Fast5	GenomeSize
-H_influenzae	./raw_data/SRR37975260_1.fastq.gz	./raw_data/SRR37975260_2.fastq.gz	NA	NA	NA
-Sanguibacter	./raw_data/SRR30149046_1.fastq.gz	./raw_data/SRR30149046_2.fastq.gz	NA	NA	NA
-V_neptunia	./raw_data/SRR29790073_1.fastq.gz	./raw_data/SRR29790073_2.fastq.gz	NA	NA	NA

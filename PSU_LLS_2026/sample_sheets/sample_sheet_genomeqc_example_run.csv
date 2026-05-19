@@ -1,0 +1,9 @@
+species,fasta,gff,taxid
+Haemophilus_influenzae,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_EXAMPLE/Unicycler/H_influenzae-unicycler.scaffolds.fa.gz,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_EXAMPLE/Prokka/H_influenzae-unicycler/H_influenzae-unicycler.gff,727
+Haemophilus_haemolyticus,./additional_genome_references/ncbi_dataset/data/GCF_900477945.1/GCF_900477945.1_45473_H02_genomic.fna,./additional_genome_references/ncbi_dataset/data/GCF_900477945.1/genomic.gff,726
+Escherichia_coli_str_K-12_substr_MG1655,./additional_genome_references/ncbi_dataset/data/GCF_000005845.2/GCF_000005845.2_ASM584v2_genomic.fna,./additional_genome_references/ncbi_dataset/data/GCF_000005845.2/genomic.gff,511145
+Haemophilus_parainfluenzae,./extra_genome_references/ncbi_dataset/data/GCF_016127215.1/GCF_016127215.1_ASM1612721v1_genomic.fna,./extra_genome_references/ncbi_dataset/data/GCF_016127215.1/genomic.gff,729
+Halomonas_garicola,./extra_genome_references/ncbi_dataset/data/GCF_055382465.1/GCF_055382465.1_ASM5538246v1_genomic.fna,./extra_genome_references/ncbi_dataset/data/GCF_055382465.1/genomic.gff,1690008
+Paraglaciecola_hydrolytica,./extra_genome_references/ncbi_dataset/data/GCF_001565895.1/GCF_001565895.1_ASM156589v1_genomic.fna,./extra_genome_references/ncbi_dataset/data/GCF_001565895.1/genomic.gff,1799789
+Sanguibacter_sp_25GB23B1,./extra_genome_references/ncbi_dataset/data/GCF_040012415.1/GCF_040012415.1_ASM4001241v1_genomic.fna,./extra_genome_references/ncbi_dataset/data/GCF_040012415.1/genomic.gff,3156067
+Vreelandella_neptunia,./extra_genome_references/ncbi_dataset/data/GCF_038593655.1/GCF_038593655.1_ASM3859365v1_genomic.fna,./extra_genome_references/ncbi_dataset/data/GCF_038593655.1/genomic.gff,115551

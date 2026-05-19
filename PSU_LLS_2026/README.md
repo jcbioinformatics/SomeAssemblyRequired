@@ -1,7 +1,25 @@
-# Example Run Without Reference
+# Poster Info
+
+Here's a brief description of the poster figures and how they were generated
+
+- Figure 1 (PR comments) is from running the code given in the Figure 1 subfolder
+    - Here, I mostly wanted to show I had a hard time getting my modules up to nf-core standards but got a lot better after my first attempt
+- Figure 2A (params) is from the genomeqc MultiQC file 
+    - Generated from running the tutorial
+- Figure 2B (versions) is from the bacass MultiQC file 
+    - Also from the tutorial
+- Figure 3 (comparison to reference) is from the bacass results
+- Figure 4 (tree) is from the genomeqc results
+- Figure 5 (QR code) was made with https://www.qrcode-monkey.com/ using https://github.com/jcbioinformatics/SomeAssemblyRequired as the URL
+
+The goal was essentially to provide a slightly more "realistic" example of analysis compared to the tutorial
+
+I stuck with _Haemophilus influenzae_ as the example because I wanted to show that using all the available raw data yields an assembly closer to the reference than what the subset used in the tutorial produces
 
 
-## Downloaded Databases
+# Figures 3 and 4 Creation
+
+## Download Databases
 
 Databasess
 - [FCS-GX](https://github.com/ncbi/fcs/wiki/FCS-GX-quickstart) - decontamination w/ genomeqc
@@ -25,7 +43,7 @@ __Important__ Move into the `nf-core-bacass_2.6.0/2_6_0` folder you downloaded f
 - The sample sheet on GitHub assumes the raw_data folder is within wherever you launch the main.nf file from
 - And, these instructions assume you are in the same folder as the main.nf file
 
-Now, we'll use the full raw data for the Haemophilus influenzae genome and see how closely we can match the reference
+Now, we'll use the full raw data for the _Haemophilus influenzae_ genome and see how closely we can match the reference
 
 ```
 # IMPORTANT!
@@ -43,11 +61,8 @@ fastq-dump --split-files --origfmt --gzip SRR17117372 --outdir raw_data_example
 
 Run `bacass` for all available _Haemophilus influenzae_ raw sequences associated with its reference
 
-<!--JC note, change to GitHub links -->
 
 ```
-
-
 conda activate nf-core
 
 nextflow run main.nf \
@@ -91,7 +106,7 @@ unzip extra_ncbi_dataset.zip -d extra_genome_references
 
 Run genomeqc
 - Change line 174 in workflows/genomqc.nf to `params.gxdb_manifiest ?: []` from `file(params.gxdb_manifiest) ?: []`
-- To avoid error with passing a null value to file (not using manifest since FCS-GX db is available locally)
+- To avoid error with passing a null value to file (not using manifest since FCS-GX db is available locally at this point)
 
 ```
 nextflow run main.nf \
