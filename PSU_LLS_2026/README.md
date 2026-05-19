@@ -2,19 +2,26 @@
 
 Here's a brief description of the poster figures and how they were generated
 
-- Figure 1 (PR comments) is from running the code given in the Figure 1 subfolder
-    - Here, I mostly wanted to show I had a hard time getting my modules up to nf-core standards but got a lot better after my first attempt
-- Figure 2A (params) is from the genomeqc MultiQC file 
+- Figure 1 - Counts of comments for [nf-core/modules](https://github.com/nf-core/modules) accepted Pull Requests (PRs)
+    - Purpose: Show I had a hard time getting my modules up to nf-core standards but got a lot better after my first attempt
+    - Generated with code [here](./Figure_1)
+- Figure 2A - Pipeline parameters as recorded in a MultiQC file
+    - Purpose: Show nf-core pipelines track parameters that override the defaults
     - Generated from running the tutorial
-- Figure 2B (versions) is from the bacass MultiQC file 
-    - Also from the tutorial
-- Figure 3 (comparison to reference) is from the bacass results
-- Figure 4 (tree) is from the genomeqc results
+- Figure 2B - Versions for all programs used in the pipeline and the pipeline itself as recorded in a MultiQC file
+    - Purpose: Show nf-core pipelines track all software versions
+    - Generated from running the tutorial
+- Figure 3 - Comparison of `bacass` assembly to reference genome generated with the same raw data
+    - Purpose: Show results of running `bacass` with all available raw data
+    - Generated with [this code](#assemble-and-annotate-the-data)
+- Figure 4 - Phylogenetic tree based on [BUSCO](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) and [OrthoFinder](https://www.biorxiv.org/content/10.1101/2025.07.15.664860v1)
+    - Purpose: Show the _H. influenzae assembly_ from `bacass` clusters as expected when evaluated with `genomeqc`
+    - Generated with [this code](#make-example-phylogenetic-tree)
 - Figure 5 (QR code) was made with https://www.qrcode-monkey.com/ using https://github.com/jcbioinformatics/SomeAssemblyRequired as the URL
 
 The goal was essentially to provide a slightly more "realistic" example of analysis compared to the tutorial
 
-I stuck with _Haemophilus influenzae_ as the example because I wanted to show that using all the available raw data yields an assembly closer to the reference than what the subset used in the tutorial produces
+I stuck with _Haemophilus influenzae_ as the example because I wanted to demonstrate that using all the available raw data yields an assembly closer to the reference than what the subset used in the tutorial produces
 
 
 # Figures 3 and 4 Creation
