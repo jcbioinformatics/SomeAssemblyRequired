@@ -2,7 +2,9 @@
 
 The purpose of this repos is to give an example of using [nf-core](https://nf-co.re/) pipelines to easily conduct reproducible analysis rather than to discuss that analysis and the rationale behind it. 
 
-Still, this can also serve as a genome assembly tutorial.
+Still, this can also serve as a genome assembly tutorial, and additional resources are provided [here](#additional-resources)
+
+Click on the Outline icon to see all the sections on this README
 
 And, I'd strongly encourage anyone who uses this repos to check out the repositories for the two pipelines used in it
 * [bacass](https://github.com/nf-core/bacass)
