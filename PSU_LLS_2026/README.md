@@ -17,7 +17,9 @@ Here's a brief description of the poster figures and how they were generated
 - Figure 4 - Phylogenetic tree based on [BUSCO](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) and [OrthoFinder](https://www.biorxiv.org/content/10.1101/2025.07.15.664860v1)
     - Purpose: Show the _H. influenzae assembly_ from `bacass` clusters as expected when evaluated with `genomeqc`
     - Generated with [this code](#make-example-phylogenetic-tree)
-- Figure 5 (QR code) was made with https://www.qrcode-monkey.com/ using https://github.com/jcbioinformatics/SomeAssemblyRequired as the URL
+- Figure 5 - QR code for this repository
+    - Purpose: Allow anyone interested to quickly find this repos
+    - Generated with https://www.qrcode-monkey.com/ using https://github.com/jcbioinformatics/SomeAssemblyRequired as the URL
 
 The goal was essentially to provide a slightly more "realistic" example of analysis compared to the tutorial
 
