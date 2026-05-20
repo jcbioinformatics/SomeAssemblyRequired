@@ -1,7 +1,34 @@
-# Example Run Without Reference
+# Poster Info
+
+Here's a brief description of the poster figures and how they were generated
+
+- Figure 1 - Counts of comments for [nf-core/modules](https://github.com/nf-core/modules) accepted Pull Requests (PRs)
+    - Purpose: Show I had a hard time getting my modules up to nf-core standards but got a lot better after my first attempt
+    - Generated with code [here](./Figure_1)
+- Figure 2A - Pipeline parameters as recorded in a MultiQC file
+    - Purpose: Show nf-core pipelines track parameters that override the defaults
+    - Generated from running the tutorial
+- Figure 2B - Versions for all programs used in the pipeline and the pipeline itself as recorded in a MultiQC file
+    - Purpose: Show nf-core pipelines track all software versions
+    - Generated from running the tutorial
+- Figure 3 - Comparison of `bacass` assembly to reference genome generated with the same raw data
+    - Purpose: Show results of running `bacass` with all available raw data
+    - Generated with [this code](#assemble-and-annotate-the-data)
+- Figure 4 - Phylogenetic tree based on [BUSCO](https://academic.oup.com/bioinformatics/article/31/19/3210/211866) and [OrthoFinder](https://www.biorxiv.org/content/10.1101/2025.07.15.664860v1)
+    - Purpose: Show the _H. influenzae assembly_ from `bacass` clusters as expected when evaluated with `genomeqc`
+    - Generated with [this code](#make-example-phylogenetic-tree)
+- Figure 5 - QR code for this repository
+    - Purpose: Allow anyone interested to quickly find this repos
+    - Generated with https://www.qrcode-monkey.com/ using https://github.com/jcbioinformatics/SomeAssemblyRequired as the URL
+
+The goal was essentially to provide a slightly more "realistic" example of analysis compared to the tutorial
+
+I stuck with _Haemophilus influenzae_ as the example because I wanted to demonstrate that using all the available raw data yields an assembly closer to the reference than what the subset used in the tutorial produces
 
 
-## Downloaded Databases
+# Figures 3 and 4 Creation
+
+## Download Databases
 
 Databasess
 - [FCS-GX](https://github.com/ncbi/fcs/wiki/FCS-GX-quickstart) - decontamination w/ genomeqc
@@ -25,7 +52,7 @@ __Important__ Move into the `nf-core-bacass_2.6.0/2_6_0` folder you downloaded f
 - The sample sheet on GitHub assumes the raw_data folder is within wherever you launch the main.nf file from
 - And, these instructions assume you are in the same folder as the main.nf file
 
-Now, we'll use the full raw data for the Haemophilus influenzae genome and see how closely we can match the reference
+Now, we'll use the full raw data for the _Haemophilus influenzae_ genome and see how closely we can match the reference
 
 ```
 # IMPORTANT!
@@ -43,11 +70,8 @@ fastq-dump --split-files --origfmt --gzip SRR17117372 --outdir raw_data_example
 
 Run `bacass` for all available _Haemophilus influenzae_ raw sequences associated with its reference
 
-<!--JC note, change to GitHub links -->
 
 ```
-
-
 conda activate nf-core
 
 nextflow run main.nf \
@@ -91,7 +115,7 @@ unzip extra_ncbi_dataset.zip -d extra_genome_references
 
 Run genomeqc
 - Change line 174 in workflows/genomqc.nf to `params.gxdb_manifiest ?: []` from `file(params.gxdb_manifiest) ?: []`
-- To avoid error with passing a null value to file (not using manifest since FCS-GX db is available locally)
+- To avoid error with passing a null value to file (not using manifest since FCS-GX db is available locally at this point)
 
 ```
 nextflow run main.nf \

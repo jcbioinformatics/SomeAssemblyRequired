@@ -385,7 +385,7 @@ The script should now look like the below (bacass shown as the example)
 - [Docker Tutorial](https://docker-curriculum.com/)
 - [Nextflow Tutorial](https://training.nextflow.io/2.1.7/)
 - [nf-core Tutorial](https://training.nextflow.io/2.1.7/side_quests/nf-core/)
-
+- See [here](./PSU_LLS_2026) for example code used to generate figures for a poster
 
 # Comprehension Exercises
 

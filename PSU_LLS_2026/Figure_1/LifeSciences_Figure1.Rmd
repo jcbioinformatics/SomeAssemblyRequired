@@ -1,0 +1,208 @@
+---
+title: "Figure 1 GH Comments"
+author: "jcbioinformatics"
+date: "2026-05-12"
+output:
+  html_document:
+    toc: true
+    toc_float: true  
+params: 
+  comments_counts: "21,5"
+  comments_labels: "First,Second"
+  prs_omit: "8680,8801"
+  input_path: "./prs_merged_comments.txt"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# Overview
+
+Create figure showing number of comments for merged nf-core/modules PRs
+
+Text file with counts should be generated with: `gh pr list --state merged --json number,title,comments --template '{{range .}}{{.number}}: {{.title}} ({{len .comments}} comments){{"\n"}}{{end}}' --limit 12000 > prs_merged_comments.txt`
+- Move into cloned repository prior to running that command
+- `gh` can be installed with conda (version 2.92.0 used). 
+
+## Parameters
+
+Describe each parameter
+
+* Paths
+  + `input_path`: File containing PR information as generated with `gh pr list --state merged --json number,title,comments --template '{{range .}}{{.number}}: {{.title}} ({{len .comments}} comments){{"\n"}}{{end}}'`
+
+* Processing
+  + `comments_counts`: Comma delimited list of comment counts for PRs of interest
+  + `comments_labels`: Comma delimited list of identifiers to use for PRs of interest
+  + `prs_omit`: Comma delimited list of PR ids to omit
+
+## Other Notes
+
+Comment count does NOT necessarily equal number given for Conversation on the web since the counts in this case do NOT include replies or code review comments
+
+
+
+```{r set Rmd version}
+
+# Follow semantic versioning as described at:
+# https://semver.org/
+
+rmd_version <- "v1.0.0"
+
+
+```
+
+
+# Parameters
+
+```{r show parameters}
+
+for (par in names(params)){
+  print(
+    paste(
+      par,
+      params[[par]],
+      sep = ": "
+    )
+  )
+}
+
+
+```
+
+
+# Processing
+
+```{r load libraries}
+
+library(ggrepel)
+library(tidyverse)
+
+
+```
+
+
+```{r set parameters}
+
+comments_counts <- strsplit(params$comments_counts, split = ",")[[1]]
+comments_labels <- strsplit(params$comments_labels, split = ",")[[1]]
+prs_omit <- strsplit(params$prs_omit, split = ",")[[1]]
+input_path <- params$input_path
+
+
+```
+
+
+```{r parse data}
+
+pr_comments_df <- read.table(
+  input_path,
+  sep = "\t",
+  quote = "",
+  comment.char = "",
+  col.names = c("Data")
+)
+
+pr_comments_df_formatted <- pr_comments_df %>% 
+  mutate(
+    ID = gsub(":.*", "", Data),
+    Comments = gsub(
+      ".*\\(([0-9]+) comments\\)$", "\\1", Data
+    ),
+    Comments = as.numeric(Comments),
+    X_plot = "Comments"
+  ) %>% 
+  filter(
+    !ID %in% prs_omit
+  )
+
+my_comments_df <- data.frame(
+  Label = comments_labels,
+  Comments = comments_counts,
+  X_plot = "Comments"
+) %>% 
+  mutate(
+    Comments = as.numeric(Comments)
+  )
+
+```
+
+
+```{r make plot}
+
+boxplot_comments <- pr_comments_df_formatted %>% 
+  ggplot(
+    aes(x = X_plot, y=Comments)
+  ) +
+  geom_boxplot(
+    fill="#24B064",
+    color="black",
+    alpha=0.8
+  ) +
+  theme_bw() +
+  theme(
+    axis.text = element_text(size = 18),
+    axis.text.x = element_blank(),
+    axis.title = element_text(size = 24)
+  ) +
+  geom_point(
+    data = my_comments_df,
+    color = "forestgreen",
+    size = 4
+  ) +
+  geom_text_repel(
+    data = my_comments_df,
+    nudge_x = 0.03,
+    aes(
+      label = Label
+    ),
+    size = 6,
+    color = "darkgreen"
+  ) +
+  xlab("") +
+  ylab("Comments Count") 
+
+
+```
+
+
+# Results
+
+```{r show plot, dpi=300, fig.width=4, fig.height=5}
+
+boxplot_comments
+
+
+```
+
+
+# Versions
+
+```{r show versions}
+
+sessionInfo()
+
+
+```
+
+
+```{r show Rmd version}
+
+print(
+  paste(
+    knitr::current_input(),
+    "version:",
+    rmd_version
+  )
+)
+
+print(
+  paste(
+    "Executed:", Sys.time()
+  )
+)
+
+
+```
