@@ -57,22 +57,21 @@ Essentially, it's the equivalent of installing different Microsoft programs thru
 conda install -y -c conda-forge conda-libmamba-solver=26.3.0
 conda config --set solver libmamba
 
-conda env create --name sra-tools -f sra-tools.yml
+conda env create --name sra-tools -f https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/conda_ymls/sra-tools.yml
 ```
 
 4. Install environment for downloading reference assemblies
-`conda env create --name ncbi-datasets -f ncbi-datasets.yml`
+`conda env create --name ncbi-datasets -f https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/conda_ymls/ncbi-datasets.yml`
 
 5. Install environment for pulling nf-core pipelines
-`conda env create --name nf-core -f nf-core.yml`
+`conda env create --name nf-core -f https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/conda_ymls/nf-core.yml`
 
 
 ## Download NF-Core Pipelines
 
-<!--JC note, one of us should really submit an issue for the QUAST versions warning problem -->
-
 1. Download `bacass`
 - _Note_: __If running on your computer__ choose "docker" at the `Download software container images` prompt
+  - Make sure Docker Desktop is running when you're downloading and using the pipelines
 - _Note_: __If running on Juniata college's cluster__, choose "none" at the `Download software container images` prompt
   - Choose "none" at the `Choose compression type` prompt
   - Using Docker or Singularity images instead of conda environments when running nf-core pipelines is generally preferred for ensuring everything matches between runs, but this tutorial assumes the user only has conda installed
@@ -146,7 +145,7 @@ unzip ncbi_dataset.zip -d h_influenzae_reference
 3. Download Kraken database for tutorial
 <!--JC note, url is placeholder. UPDATE, once it's on main -->
 ```
-wget https://github.com/jcbioinformatics/SomeAssemblyRequired/blob/dev/TUTORIAL_dbs/TUTORIAL_k2_db.tar.gz
+wget https://github.com/jcbioinformatics/SomeAssemblyRequired/raw/refs/heads/main/TUTORIAL_dbs/TUTORIAL_k2_db.tar.gz
 ```
 
 
@@ -185,7 +184,7 @@ conda activate nf-core
 
 nextflow run main.nf \
   -profile docker \
-  --input sample_sheet_bacass_tutorial.txt \
+  --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/TUTORIAL_Sample_Sheets/sample_sheet_bacass_tutorial.txt \
   --assembly_type 'short' \
   --assembler 'unicycler' \
   --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
@@ -232,11 +231,11 @@ See bacass's documentation [here](https://github.com/nf-core/bacass/blob/master/
 
 ## Decontaminate and Evaluate Assembly
 
-1. Move into the `nf-core-genomeqc_787a0e6/787a0e6` folder
+1. Move into the `nf-core-genomeqc_1947a80/1947a80` folder
 
 If you're command line is currently in the `2_6_0` subfolder, you can use the below command
 
-`cd ../../nf-core-genomeqc_787a0e6/787a0e6`
+`cd ../../nf-core-genomeqc_1947a80/1947a80`
 
 <!--JC note, strike this download if test manifest works -->
 
@@ -254,24 +253,16 @@ unzip ncbi_dataset.zip -d additional_genome_references
 ```
 
 
-<!--JC note, the samplesheet will point to a GitHub url once this repos is public -->
-
 3. Run genomeqc
 
 _Note_: __If running on Juniata's cluster__, see the [Juniata Cluster Execution](#juniata-cluster-execution) section
 
-
-<!--JC note, Need to make a branch with my edits to nextflow.config, nextflow.schema, and subworkflows/decontamination.nf -->
-<!-- JC note, busco versions may be messed up, see /home/see/Projects/2026/April/LifeSciencesSymposium/redo_TUTORIAL/nf-core-genomeqc_787a0e6/787a0e6/work/60/8fa962430a3262c6b0ee5cb34cada7-->
-
-<!--GCF_040012415.1 Sanguibacter sp. 25GB23B1 -->
-<!--GCF_038593655.1 Vreelandella neptunia -->
 ```
 conda activate nf-core
 
 nextflow run main.nf \
   -profile docker \
-  --input $PWD/sample_sheet_genomeqc_tutorial.csv \
+  --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/TUTORIAL_Sample_Sheets/sample_sheet_genomeqc_tutorial.csv \
   --gxdb_manifiest 'https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest' \
   --outdir results_genomeqc_TUTORIAL
 
@@ -339,7 +330,7 @@ export NXF_SINGULARITY_CACHEDIR='/home/see/NFX_Singularity'
 
 nextflow run main.nf \
   -profile singularity \
-  --input sample_sheet_bacass_tutorial.txt \
+  --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/TUTORIAL_Sample_Sheets/sample_sheet_bacass_tutorial.txt \
   --assembly_type 'short' \
   --kraken2db $PWD/TUTORIAL_k2_db.tar.gz \
   --reference_fasta $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna \
@@ -359,7 +350,7 @@ conda activate nf-core
 export NXF_SINGULARITY_CACHEDIR='/home/see/NFX_Singularity'
 nextflow run main.nf \
   -profile singularity \
-  --input $PWD/sample_sheet_genomeqc_tutorial.csv \
+  --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/TUTORIAL_Sample_Sheets/sample_sheet_genomeqc_tutorial.csv \
   --gxdb_manifiest https://ftp.ncbi.nlm.nih.gov/genomes/TOOLS/FCS/database/test-only/test-only.manifest \
   --skip_fcs_adaptor \
   --outdir results_genomeqc_TUTORIAL

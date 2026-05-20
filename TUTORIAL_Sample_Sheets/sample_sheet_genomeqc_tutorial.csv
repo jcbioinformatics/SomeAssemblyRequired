@@ -1,5 +1,5 @@
 species,fasta,gff,taxid
-Haemophilus_influenzae_local_ref,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_TUTORIAL/Unicycler/H_influenzae_ref-unicycler.scaffolds.fa.gz,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_TUTORIAL/Prokka/H_influenzae_ref-unicycler/H_influenzae_ref-unicycler.gf,727
+Haemophilus_influenzae_local_ref,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_TUTORIAL/Unicycler/H_influenzae_ref-unicycler.scaffolds.fa.gz,../../nf-core-bacass_2.6.0/2_6_0/results_bacass_TUTORIAL/Prokka/H_influenzae_ref-unicycler/H_influenzae_ref-unicycler.gff,727
 Haemophilus_influenzae,../../nf-core-bacass_2.6.0/2_6_0/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna,../../nf-core-bacass_2.6.0/2_6_0/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/genomic.gff,727
 Haemophilus_haemolyticus,./additional_genome_references/ncbi_dataset/data/GCF_900477945.1/GCF_900477945.1_45473_H02_genomic.fna,./additional_genome_references/ncbi_dataset/data/GCF_900477945.1/genomic.gff,726
 Escherichia_coli_str_K-12_substr_MG1655,./additional_genome_references/ncbi_dataset/data/GCF_000005845.2/GCF_000005845.2_ASM584v2_genomic.fna,./additional_genome_references/ncbi_dataset/data/GCF_000005845.2/genomic.gff,511145

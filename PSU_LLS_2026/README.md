@@ -34,6 +34,8 @@ Databasess
 - [FCS-GX](https://github.com/ncbi/fcs/wiki/FCS-GX-quickstart) - decontamination w/ genomeqc
 - [Kraken2](https://github.com/DerrickWood/kraken2/wiki/Manual) - genome purity assessment w/ bacass
 ```
+conda env create --name fcs-gx -f https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/dev/conda_ymls/fcs-gx.yml
+
 conda activate fcs-gx
 
 sync_files.py get \
@@ -80,7 +82,7 @@ nextflow run main.nf \
     -profile singularity,slurm_jc \
     --assembly_type 'short' \
     --assembler 'unicycler' \
-    --input sample_sheet_bacass_example.txt \
+    --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/PSU_LLS_2026/sample_sheets/sample_sheet_bacass_example.txt \
     --kraken2db /home/see/databases/k2_standard_16_GB_20260226/k2_standard_16_GB_20260226.tar.gz \
     --skip_kmerfinder \
     --reference_fasta $PWD/h_influenzae_reference/ncbi_dataset/data/GCF_020736045.1/GCF_020736045.1_ASM2073604v1_genomic.fna \
@@ -94,7 +96,7 @@ nextflow run main.nf \
 
 Move into genomeqc folder from tutorial
 
-`cd ../../nf-core-genomeqc_787a0e6/787a0e6`
+`cd ../../nf-core-genomeqc_1947a80/1947a80`
 
 Download additional reference genomes
 
@@ -122,7 +124,7 @@ nextflow run main.nf \
     -c nextflow.config \
     -c juniata_cluster.config \
     -profile singularity,slurm_jc \
-    --input $PWD/sample_sheet_genomeqc_example_run.csv \
+    --input https://raw.githubusercontent.com/jcbioinformatics/SomeAssemblyRequired/refs/heads/main/PSU_LLS_2026/sample_sheets/sample_sheet_genomeqc_example_run.csv \
     --gxdb /home/see/databases/FCS-GX \
     --partition batch-high \
     --outdir results_genomeqc_EXAMPLE
