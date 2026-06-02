@@ -12,6 +12,10 @@ And, I'd strongly encourage anyone who uses this repos to check out the reposito
 
 __Important__: If you are using Windows please use Ubuntu through WSL
 
+___Important___: Before using any nf-core pipeline, make sure you understand how it works well enough to know that it is appropriate for your data
+- Many nf-core pipeline GitHub repositories contain visual representations of the pipelines and the programs they use
+- Even if a pipeline (or any program) runs, it could still yield invalid or nonsensical results
+
 
 # Tutorial
 
